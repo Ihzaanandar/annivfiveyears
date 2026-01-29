@@ -157,8 +157,8 @@ function HangingVine({ delay = 0, x, length = 'md', mirror = false }) {
 }
 
 // Realistic Flower Component (Head Only)
+// Realistic Flower Component (Head Only) - OPTIMIZED
 function RealisticFlower({ size = 'md', delay = 0, style, type = 1, color = 'pink' }) {
-    // ... (existing RealisticFlower code)
     const scale = size === 'lg' ? 1.2 : size === 'sm' ? 0.7 : 0.9;
     const uniqueId = `flower-${Math.random().toString(36).substr(2, 9)}`;
 
@@ -189,82 +189,99 @@ function RealisticFlower({ size = 'md', delay = 0, style, type = 1, color = 'pin
 
     const c = colors[color] || colors.pink;
 
+    // Random duration for CSS animation to avoid mechanical feel
+    const swayDuration = 5 + Math.random() * 4 + 's';
+    const swayDelay = -Math.random() * 5 + 's';
+
     return (
         <motion.div
             className="absolute bottom-0 origin-bottom"
-            style={{ ...style, width: 140 * scale, height: 140 * scale, filter: 'drop-shadow(0px 10px 10px rgba(0,0,0,0.15))' }}
+            style={{
+                ...style,
+                width: 140 * scale,
+                height: 140 * scale,
+                filter: 'drop-shadow(0px 10px 10px rgba(0,0,0,0.15))',
+                willChange: 'transform, opacity' // Hint specifically for this container
+            }}
             initial={{ scale: 0, opacity: 0 }}
             animate={{
                 scale: 1,
-                opacity: 1,
-                rotate: [0, 5, 0, -5, 0] // Gentle rotation
+                opacity: 1
             }}
             transition={{
                 scale: { duration: 1.5, delay: delay, ease: "spring" },
-                opacity: { duration: 1, delay: delay },
-                rotate: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: delay }
+                opacity: { duration: 1, delay: delay }
             }}
         >
-            <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
-                <defs>
-                    {/* Petal Gradient - Main */}
-                    <linearGradient id={`${uniqueId}-petal-grad`} x1="50%" y1="100%" x2="50%" y2="0%">
-                        <stop offset="0%" stopColor={c.petalDark} />
-                        <stop offset="40%" stopColor={c.petalMain} />
-                        <stop offset="90%" stopColor={c.petalLight} />
-                    </linearGradient>
-                </defs>
+            {/* Inner container for continuous CSS swaying */}
+            <div
+                className="w-full h-full animate-petal-sway origin-bottom"
+                style={{
+                    animationDuration: swayDuration,
+                    animationDelay: swayDelay
+                }}
+            >
+                <svg viewBox="0 0 200 200" className="w-full h-full overflow-visible">
+                    <defs>
+                        {/* Petal Gradient - Main */}
+                        <linearGradient id={`${uniqueId}-petal-grad`} x1="50%" y1="100%" x2="50%" y2="0%">
+                            <stop offset="0%" stopColor={c.petalDark} />
+                            <stop offset="40%" stopColor={c.petalMain} />
+                            <stop offset="90%" stopColor={c.petalLight} />
+                        </linearGradient>
+                    </defs>
 
-                {/* Flower Head Group */}
-                <g transform="translate(100, 100)">
-                    {/* Layer 1: Back Petals (Darker/Larger) */}
-                    {[0, 72, 144, 216, 288].map((rot, i) => (
-                        <path
-                            key={`l1-${i}`}
-                            d="M0,0 C-15,-20 -25,-50 0,-70 C25,-50 15,-20 0,0"
-                            fill={c.petalDark}
-                            opacity="0.9"
-                            transform={`rotate(${rot}) scale(1.1)`}
-                        />
-                    ))}
+                    {/* Flower Head Group */}
+                    <g transform="translate(100, 100)">
+                        {/* Layer 1: Back Petals (Darker/Larger) */}
+                        {[0, 72, 144, 216, 288].map((rot, i) => (
+                            <path
+                                key={`l1-${i}`}
+                                d="M0,0 C-15,-20 -25,-50 0,-70 C25,-50 15,-20 0,0"
+                                fill={c.petalDark}
+                                opacity="0.9"
+                                transform={`rotate(${rot}) scale(1.1)`}
+                            />
+                        ))}
 
-                    {/* Layer 2: Main Petals (Gradient) */}
-                    {[36, 108, 180, 252, 324].map((rot, i) => (
-                        <motion.path
-                            key={`l2-${i}`}
-                            d="M0,0 C-15,-20 -20,-50 0,-65 C20,-50 15,-20 0,0"
-                            fill={`url(#${uniqueId}-petal-grad)`}
-                            transform={`rotate(${rot})`}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: delay + 0.5 + (i * 0.1) }}
-                        />
-                    ))}
+                        {/* Layer 2: Main Petals (Gradient) */}
+                        {[36, 108, 180, 252, 324].map((rot, i) => (
+                            <motion.path
+                                key={`l2-${i}`}
+                                d="M0,0 C-15,-20 -20,-50 0,-65 C20,-50 15,-20 0,0"
+                                fill={`url(#${uniqueId}-petal-grad)`}
+                                transform={`rotate(${rot})`}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ delay: delay + 0.5 + (i * 0.1) }}
+                            />
+                        ))}
 
-                    {/* Layer 3: Inner Detail Petals (Lighter) */}
-                    {[0, 72, 144, 216, 288].map((rot, i) => (
-                        <path
-                            key={`l3-${i}`}
-                            d="M0,0 C-5,-10 -10,-30 0,-40 C10,-30 5,-10 0,0"
-                            fill={c.petalLight}
-                            opacity="0.6"
-                            transform={`rotate(${rot}) scale(0.8)`}
-                        />
-                    ))}
+                        {/* Layer 3: Inner Detail Petals (Lighter) */}
+                        {[0, 72, 144, 216, 288].map((rot, i) => (
+                            <path
+                                key={`l3-${i}`}
+                                d="M0,0 C-5,-10 -10,-30 0,-40 C10,-30 5,-10 0,0"
+                                fill={c.petalLight}
+                                opacity="0.6"
+                                transform={`rotate(${rot}) scale(0.8)`}
+                            />
+                        ))}
 
-                    {/* Center Stamen */}
-                    <circle cx="0" cy="0" r="12" fill={c.centerDark} />
-                    {[...Array(8)].map((_, i) => (
-                        <circle
-                            key={`stamen-${i}`}
-                            cx={7 * Math.cos(i * 0.785)}
-                            cy={7 * Math.sin(i * 0.785)}
-                            r="2.5"
-                            fill={c.center}
-                        />
-                    ))}
-                </g>
-            </svg>
+                        {/* Center Stamen */}
+                        <circle cx="0" cy="0" r="12" fill={c.centerDark} />
+                        {[...Array(8)].map((_, i) => (
+                            <circle
+                                key={`stamen-${i}`}
+                                cx={7 * Math.cos(i * 0.785)}
+                                cy={7 * Math.sin(i * 0.785)}
+                                r="2.5"
+                                fill={c.center}
+                            />
+                        ))}
+                    </g>
+                </svg>
+            </div>
         </motion.div>
     );
 }
@@ -400,7 +417,7 @@ export default function FinaleScreen({ onRestart, onBack }) {
                         {/* BOTTOM SECTION: VIBRANT FLOWER HILL */}
                         <div className="absolute bottom-0 left-0 right-0 h-[60%] pointer-events-none">
                             {/* 1. Deep Back Layer (Smaller, faint, higher up to create depth) */}
-                            {[...Array(25)].map((_, i) => {
+                            {[...Array(15)].map((_, i) => { // Reduced from 25 to 15
                                 const leftPos = Math.random() * 100;
                                 // Create a hill shape: higher in the sides/middle or just random bumps
                                 const bottomOffset = Math.sin(leftPos / 100 * Math.PI) * 100 + Math.random() * 100;
@@ -422,7 +439,7 @@ export default function FinaleScreen({ onRestart, onBack }) {
                             })}
 
                             {/* 2. Middle Layer (More dense, main volume) */}
-                            {[...Array(30)].map((_, i) => {
+                            {[...Array(25)].map((_, i) => { // Reduced from 30 to 25
                                 const leftPos = Math.random() * 100;
                                 const bottomOffset = Math.sin(leftPos / 100 * Math.PI) * 50 + Math.random() * 50;
                                 return (
@@ -442,14 +459,14 @@ export default function FinaleScreen({ onRestart, onBack }) {
                             })}
 
                             {/* 3. Front Layer (Large, detailed, anchoring the bottom) */}
-                            {[...Array(15)].map((_, i) => (
+                            {[...Array(12)].map((_, i) => ( // Reduced from 15 to 12
                                 <RealisticFlower
                                     key={`front-${i}`}
                                     size="lg"
                                     color={['hotpink', 'pink', 'purple'][Math.floor(Math.random() * 3)]}
                                     delay={0.6 + Math.random() * 0.5}
                                     style={{
-                                        left: `${(i / 14) * 100}%`,
+                                        left: `${(i / 11) * 100}%`,
                                         bottom: `${-20 + Math.random() * 40}px`,
                                         zIndex: 10
                                     }}

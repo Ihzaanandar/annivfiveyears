@@ -1,66 +1,70 @@
-# 💝 Kado Anniversary Spesial
+# 💝 Special Anniversary Gift
 
-Sebuah website interaktif yang dibuat khusus untuk merayakan hari jadian (Anniversary). Website ini berisi perjalanan cinta, kuis kenangan, album foto, dan kejutan akhir yang manis.
+An interactive web experience crafted to celebrate a special romantic journey. This project features a password-protected gateway, interactive memory quizzes, a digital scrapbook, and a cinematic grand finale.
 
-## ✨ Fitur Utama
+## ✨ Key Features
 
-1.  **Pin Protection (Kunci Hati)**:
-    -   Halaman awal yang terkunci password (tanggal jadian).
-    -   Animasi gemes saat salah password.
-    -   Petunjuk (Hint) jika lupa.
+1.  **Heart Lock (Pin Protection)**:
+    -   Secure entry using a special date (PIN).
+    -   Interactive shake animations for incorrect attempts.
+    -   Hints available for playful interaction.
 
-2.  **Love Quiz (Kuis Cinta)**:
-    -   Pertanyaan seputar hubungan kalian.
-    -   Reaksi lucu jika jawaban salah.
-    -   Progress bar bentuk hati.
+2.  **Love Quiz**:
+    -   A gamified journey through shared memories.
+    -   Dynamic reactions and feedback.
+    -   Visual progress tracking.
 
-3.  **Surat Cinta (Story)**:
-    -   Efek mengetik (typewriter) yang romantis.
-    -   Musik latar (opsional) dan animasi hati berterbangan.
-    -   Layout surat yang elegan.
+3.  **The Story**:
+    -   Cinematic typewriter text effects.
+    -   Atmospheric background music and floating elements.
+    -   Elegant, center-aligned typography.
 
-4.  **Album Kenangan (Scrapbook)**:
-    -   Tampilan foto polaroid yang bisa diputar-putar.
-    -   Stiker lucu dan caption tiap tahunnya.
-    -   Navigasi yang interaktif.
+4.  **Memory Scrapbook**:
+    -   Interactive polaroid-style photo album.
+    -   Draggable/Rotatable sticker decorations (visual only).
+    -   Smooth "card deck" navigation.
 
-5.  **Grand Finale (Kejutan)**:
-    -   Taman bunga yang tumbuh memenuhi layar.
-    -   Kupu-kupu beterbangan dan efek aurora.
-    -   Pesan penutup yang menyentuh hati.
+5.  **Grand Finale**:
+    -   **"Flower Hill"**: A procedurally generated, dense field of realistic flowers.
+    -   **Atmospheric Effects**: Floating petals, butterflies, and aurora backgrounds.
+    -   **Performance Optimized**: Animations powered by CSS for smooth 60fps rendering.
 
-## 🚀 Cara Menjalankan (Di Komputer Sendiri)
+## 🚀 Getting Started
 
-Pastikan kamu sudah menginstall [Node.js](https://nodejs.org/) di komputermu.
+Ensure you have [Node.js](https://nodejs.org/) installed on your machine.
 
-1.  **Download/Clone Folder ini**.
-2.  Buka terminal (Command Prompt/PowerShell) di dalam folder tersebut.
-3.  Install dependency (cukup sekali):
+1.  **Clone the Repository**:
+    ```bash
+    git clone https://github.com/yourusername/anniv-gift.git
+    cd anniv-gift
+    ```
+
+2.  **Install Dependencies**:
     ```bash
     npm install
     ```
-4.  Jalankan aplikasi:
+
+3.  **Run Development Server**:
     ```bash
     npm run dev
     ```
-5.  Buka link yang muncul di browser (biasanya `http://localhost:5173`).
+4.  Open the link provided in your terminal (usually `http://localhost:5173`).
 
-## 🌐 Cara Upload ke Internet (Vercel)
+## 🌐 Deployment (Vercel)
 
-Agar bisa dibuka di HP ayang, kamu perlu meng-uploadnya ke internet. Cara termudah adalah pakai **Vercel**.
+To share this with your special someone, deploy it using **Vercel**:
 
-1.  **Upload ke GitHub** dulu (buat repository baru di github.com dan upload semua filenya).
-2.  Buka [Vercel.com](https://vercel.com) dan login (bisa pakai akun GitHub).
-3.  Klik **"Add New Project"** lalu pilih repository yang sudah kamu buat.
-4.  Klik **"Deploy"**.
-5.  Tunggu sebentar, dan website kamu sudah online! Kirim link-nya ke dia. 💌
+1.  Push your code to a new **GitHub Application**.
+2.  Log in to [Vercel](https://vercel.com) and click **"Add New Project"**.
+3.  Import your repository.
+4.  Click **"Deploy"**.
 
-## 🛠️ Teknologi yang Dipakai
+## 🛠️ Tech Stack
 
--   **React**: Untuk membuat aplikasinya canggih.
--   **Tailwind CSS**: Untuk desain yang cantik dan berwarna soft pink.
--   **Framer Motion**: Untuk animasi yang mulus banget.
--   **Vite**: Agar website super cepat.
+-   **React 19**: Modern UI library for component-based architecture.
+-   **Tailwind CSS 4**: Utility-first CSS framework for rapid styling.
+-   **Framer Motion**: Production-ready animation library for React.
+-   **Vite**: Next-generation frontend tooling.
 
 ---
-*Dibuat dengan ❤️ untuk momen spesial.*
+*Crafted with ❤️ for timeless memories.*

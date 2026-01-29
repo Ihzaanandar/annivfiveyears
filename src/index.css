@@ -177,3 +177,43 @@ body {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+@keyframes petal-sway {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(5deg);
+  }
+
+  75% {
+    transform: rotate(-5deg);
+  }
+}
+
+.animate-petal-sway {
+  animation: petal-sway 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes gentle-rotate {
+  0% {
+    transform: rotate(-2deg);
+  }
+
+  50% {
+    transform: rotate(2deg);
+  }
+
+  100% {
+    transform: rotate(-2deg);
+  }
+}
+
+.animate-gentle-rotate {
+  animation: gentle-rotate 4s ease-in-out infinite;
+  will-change: transform;
+}
