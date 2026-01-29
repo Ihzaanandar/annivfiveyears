@@ -136,13 +136,13 @@ export default function StoryScreen({ onNext, onBack }) {
                 <motion.div
                     initial={{ y: 100 }}
                     animate={{ y: 0 }}
-                    className="fixed bottom-15 left-0 right-0 p-6 bg-gradient-to-t from-white via-white/80 to-transparent z-50 flex justify-center"
+                    className="fixed bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-white via-white/80 to-transparent z-50 flex justify-center"
                 >
                     <button
                         onClick={onNext}
                         className="px-8 py-4 bg-deep-rose text-white rounded-full font-serif text-xl shadow-lg hover:shadow-xl hover:scale-105 transition-all flex items-center gap-3"
                     >
-                        <BookOpen className="w-12 h-12" />
+                        <BookOpen className="w-10 h-10" />
                         Buka Album Kita
                     </button>
                 </motion.div>

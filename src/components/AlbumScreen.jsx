@@ -6,7 +6,7 @@ import BackButton from './BackButton';
 const photos = [
     {
         id: 1,
-        src: "public/assets/image/2021.jpeg",
+        src: "/assets/image/2021.jpeg",
         caption: "Awal dari semuanya",
         year: "2021",
         color: "bg-rose-100",
@@ -14,7 +14,7 @@ const photos = [
     },
     {
         id: 2,
-        src: "public/assets/image/2022.jpeg",
+        src: "/assets/image/2022.jpeg",
         caption: "Petualangan kita",
         year: "2022",
         color: "bg-blue-100",
@@ -22,7 +22,7 @@ const photos = [
     },
     {
         id: 3,
-        src: "public/assets/image/2023.png",
+        src: "/assets/image/2023.png",
         caption: "Tumbuh bersama",
         year: "2023",
         color: "bg-yellow-100",
@@ -30,7 +30,7 @@ const photos = [
     },
     {
         id: 4,
-        src: "public/assets/image/2024.jpeg",
+        src: "/assets/image/2024.jpeg",
         caption: "Lebih kuat dari sebelumnya",
         year: "2024",
         color: "bg-purple-100",
@@ -38,7 +38,7 @@ const photos = [
     },
     {
         id: 5,
-        src: "public/assets/image/2025.jpeg",
+        src: "/assets/image/2025.jpeg",
         caption: "Lima tahun cinta bersama",
         year: "2025",
         color: "bg-pink-100",
