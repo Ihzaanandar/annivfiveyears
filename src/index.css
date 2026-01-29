@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Outfit:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-rose-soft: #ffe4e6;
+  --color-blush-pink: #fecdd3;
+  --color-deep-rose: #e11d48;
+  --color-dark-text: #4c0519;
+  --color-white: #ffffff;
+  --color-cream: #fff1f2;
+  --color-gold: #fbbf24;
+  --color-pastel-pink: #ffd6e0;
+  --color-pastel-blue: #cce4f7;
+  --color-pastel-yellow: #fff5ba;
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Quicksand', 'Outfit', system-ui, sans-serif;
+  --font-script: 'Dancing Script', cursive;
+
+  --shadow-soft: 0 4px 20px rgba(225, 29, 72, 0.1);
+  --shadow-glow: 0 0 15px rgba(225, 29, 72, 0.3);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-dark-text);
+  background: linear-gradient(135deg, #fff0f5 0%, #fff 50%, #ffe4e6 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, var(--color-blush-pink), var(--color-deep-rose));
+  border-radius: 99px;
+  border: 2px solid #fff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-deep-rose);
+}
+
+/* Animations */
+@keyframes shake {
+
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-6px) rotate(-1deg);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(6px) rotate(1deg);
+  }
+}
+
+.shake {
+  animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+}
+
+/* Floating Hearts Background Animation */
+@keyframes float-up {
+  0% {
+    transform: translateY(110vh) scale(0.5) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.8;
+  }
+
+  90% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-10vh) scale(1) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.floating-heart {
+  position: fixed;
+  bottom: -100px;
+  pointer-events: none;
+  animation: float-up var(--duration) linear infinite;
+  font-size: var(--size);
+  left: var(--left);
+  color: var(--color);
+  z-index: 0;
+  filter: drop-shadow(0 2px 4px rgba(233, 30, 99, 0.1));
+}
+
+/* Glass Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 10px 40px rgba(225, 29, 72, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  border-radius: 24px;
+}
+
+/* Polaroid */
+.polaroid {
+  background: #fff;
+  padding: 12px 12px 40px 12px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.1),
+    0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.polaroid:hover {
+  transform: scale(1.02) rotate(0deg) !important;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+/* Juicy Button */
+.juicy-button {
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.juicy-button:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 10px 30px -5px rgba(225, 29, 72, 0.4);
+}
+
+.juicy-button:active {
+  transform: scale(0.95);
+}
+
+/* Text Gradients & Glows */
+.text-glow {
+  text-shadow: 0 0 20px rgba(225, 29, 72, 0.15);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #e11d48 0%, #be123c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
