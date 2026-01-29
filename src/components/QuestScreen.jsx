@@ -38,7 +38,7 @@ const quests = [
             "2022"
         ],
         correct: 3,
-        image: "public/assets/image/fotodiambil.jpeg",
+        image: "/assets/image/fotodiambil.jpeg",
         emoji: "📸",
     },
 ];
